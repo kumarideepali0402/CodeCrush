@@ -20,7 +20,7 @@ const userAuth = async (req, res, next) => {
     
                 
     } catch (error) {
-        res.status(500).send("Error in jwt decoding")
+        res.status(500).send("Error in jwt decoding"+error)
         
     }
 

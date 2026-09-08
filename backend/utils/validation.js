@@ -18,5 +18,18 @@ const validateSignUpData = (req) => {
 }
 
 
+const validateIsEditable = (req) => {
+    const allowedEdits = ["name", "skills", "about"];
+    const isEditable = Object.keys(req.body).every((k)=> allowedEdits.includes(k));
+    if(!isEditable) throw new Error("Uneditable fields")  
+} 
 
-module.exports = {validateSignUpData}
+const acceptedConnectionStatus = (status) => {
+    const allowedStatus = ["accepted", "rejected", "interested", "uninterested"]
+
+    if(!allowedStatus.includes(status)) throw new Error(`${status} is an Invalid status`);
+
+
+}
+
+module.exports = {validateSignUpData, validateIsEditable, acceptedConnectionStatus} 
