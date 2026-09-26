@@ -1,5 +1,6 @@
 const express = require("express")
 const userRouter = express.Router()
+const User = require("../models/user")
 
 
 const { userAuth } = require("../middlewares/userAuth")
@@ -20,7 +21,7 @@ userRouter.get("/user/requests/received", userAuth, async(req, res) => {
         })
     
    } catch (error) {
-    req.statusCode(400).send("ERROR: " + err.message)
+    res.status(400).send("ERROR: " + error.message)
     
    }
 } )
@@ -40,8 +41,50 @@ userRouter.get("/user/connections", userAuth, async(req, res) => {
         res.json({data})
         
     } catch (error) {
-        res.status(400).send({message: err.message})
+        res.status(400).send({message: error.message})
     }
+})
+
+
+userRouter.get("/feed", userAuth, async(req, res) => {
+   try {
+     const loggedInUser = req.user;
+
+     const page = parseInt(req.query.page) || 1;
+     let limit = parseInt(req.query.limit) || 10;
+     limit = limit > 50? 50: limit;
+
+     const skip = (Math.max(page, 1) - 1) *  limit;
+
+     const connectionRequests = await ConnectionRequest.find({
+        $or:[
+            {fromUserId: loggedInUser._id},
+            {toUserId: loggedInUser._id}
+        ]
+     }).select("fromUserId toUserId")
+     const hideUsers = new Set()
+     connectionRequests.forEach((u) =>{
+        hideUsers.add(u.fromUserId._id)
+        hideUsers.add(u.toUserId._id)
+
+     } )
+
+     const data = await User.find({
+        $and:[
+           {_id: {"$nin" : Array.from(hideUsers) }},
+           {_id: {"$ne" : loggedInUser._id}}
+        ]
+     }).select("name").skip(skip).limit(limit);
+
+
+     res.status(200).send(data)
+
+    
+   } catch (error) {
+    res.status(400).json({message: error.message})
+    
+   }
+
 })
 
 
