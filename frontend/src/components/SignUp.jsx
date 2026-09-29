@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router";
+import { addUser } from "../utils/userSlice";
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -7,6 +9,7 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
+  const dispatch = useDispatch()
 
   async function onSignUp(e) {
     e.preventDefault();
@@ -20,7 +23,8 @@ export default function SignUp() {
         body: JSON.stringify({ name, email, password }),
       });
       const data = await res.json();
-      setMessage(data.msg);
+      dispatch(addUser(res.data.user))
+      setMessage(data?.error??data.msg);
     } catch (error) {
       setMessage(error.message);
     } finally {

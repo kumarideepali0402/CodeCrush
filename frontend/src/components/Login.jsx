@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -19,6 +23,8 @@ export default function Login() {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
+      dispatch(addUser(data.user))
+      navigate('/')
       setMessage(data.msg);
     } catch (error) {
       setMessage(error.message);
