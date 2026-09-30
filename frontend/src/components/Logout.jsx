@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router";
-
+import { useDispatch } from "react-redux";
+import { Link,  useNavigate } from "react-router";
+import { removeUser } from "../utils/userSlice";
 export default function Logout() {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   async function onLogOut() {
     try {
@@ -14,7 +17,10 @@ export default function Logout() {
         credentials: "include",
       });
       const data = await res.json();
+      
+      navigate("/login")
       setMessage(data.msg);
+      return dispatch(removeUser())
     } catch (error) {
       setMessage(error.message);
     } finally {

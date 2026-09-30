@@ -23,7 +23,7 @@ export default function SignUp() {
         body: JSON.stringify({ name, email, password }),
       });
       const data = await res.json();
-      dispatch(addUser(res.data.user))
+      dispatch(addUser(data.user))
       setMessage(data?.error??data.msg);
     } catch (error) {
       setMessage(error.message);

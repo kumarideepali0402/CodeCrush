@@ -14,7 +14,7 @@ export default function NavBar() {
 
       <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">
-          <span>Welcome! {user.name}</span>
+          <span>Welcome! {user?.name}</span>
           <div
             tabIndex={0}
             role="button"
