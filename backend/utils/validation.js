@@ -19,7 +19,7 @@ const validateSignUpData = (req) => {
 
 
 const validateIsEditable = (req) => {
-    const allowedEdits = ["name", "skills", "about"];
+    const allowedEdits = ["name", "skills", "about", "photoUrl"];
     const isEditable = Object.keys(req.body).every((k)=> allowedEdits.includes(k));
     if(!isEditable) throw new Error("Uneditable fields")  
 } 

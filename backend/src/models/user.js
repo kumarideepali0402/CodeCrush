@@ -23,10 +23,17 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     skills:{
-        type: ["String"]
+        type: ["String"],
+        default : ["Dancing, Singing"]
     },
     about:{
-        type: "String"
+        type: "String",
+        default:"This is default about"
+    },
+    photoUrl:{
+        type: "String",
+        default:'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp'
+
     }
 })
 

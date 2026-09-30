@@ -10,9 +10,9 @@ import { useSelector } from "react-redux";
 export default function Body(){
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const userData = useSelector((store) => store.name)
+    const userData = useSelector((store) => store.user)
     async function fetchUserDetails() {
-        if(!userData) return
+        if(userData) return
 
         try {
             const res = await fetch(`${import.meta.env.VITE_BASE_URL}/profile/view`, {

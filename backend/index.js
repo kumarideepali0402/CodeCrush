@@ -12,6 +12,7 @@ const authRouter = require("./src/routes/auth")
 const profileRouter = require("./src/routes/profile")
 const requestRouter = require("./src/routes/request")
 const cors = require("cors")
+const userRouter = require("./src/routes/user")
 
 
 
@@ -41,6 +42,7 @@ app.use(cors({
 app.use('/',authRouter)
 app.use('/',profileRouter)
 app.use('/',requestRouter)
+app.use('/', userRouter)
 
 
 
