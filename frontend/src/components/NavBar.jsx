@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 export default function NavBar() {
   const user = useSelector((store) => store.user);
-  console.log(user)
+ 
   return (
     <div className="navbar bg-base-300 shadow-sm px-4">
       <div className="flex-1">
@@ -40,6 +40,9 @@ export default function NavBar() {
             </li>
             <li>
               <Link to="/connections">Connections</Link>
+            </li>
+            <li>
+              <Link to="/requests">Requests</Link>
             </li>
             <li>
               <Link to="/logout">Logout</Link>

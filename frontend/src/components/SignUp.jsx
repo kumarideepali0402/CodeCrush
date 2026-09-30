@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { addUser } from "../utils/userSlice";
 
 export default function SignUp() {
@@ -9,7 +9,8 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   async function onSignUp(e) {
     e.preventDefault();
@@ -23,8 +24,11 @@ export default function SignUp() {
         body: JSON.stringify({ name, email, password }),
       });
       const data = await res.json();
-      dispatch(addUser(data.user))
-      setMessage(data?.error??data.msg);
+      if (!res.ok) {
+        throw new Error(data?.msg || data?.error || "Failed to create account");
+      }
+      dispatch(addUser(data.user));
+      navigate("/profile");
     } catch (error) {
       setMessage(error.message);
     } finally {

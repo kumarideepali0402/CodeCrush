@@ -65,16 +65,13 @@ requestRouter.post('/request/review/:status/:requestId', userAuth, async(req, re
                 return res.status(400).send("Invalid status")
             }
             const connectionExists = await ConnectionRequest.findOne({
-                _id:requestId,
-                toUserId:req.user.id,
-                status:"interested"
-
-            })
-
-           
+                _id: requestId,
+                toUserId: req.user._id,
+                status: "interested"
+            });
 
             if (!connectionExists) {
-                return req.send(400).send("Connection doesnt exist")
+                return res.status(404).json({ msg: "Connection doesnt exist" });
             }
 
             connectionExists.status = status
