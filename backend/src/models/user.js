@@ -32,8 +32,7 @@ const userSchema = new mongoose.Schema({
     },
     photoUrl:{
         type: "String",
-        default:'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp'
-
+        default: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=800&q=80"
     }
 })
 

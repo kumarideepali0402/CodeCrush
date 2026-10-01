@@ -6,7 +6,7 @@ export default function Footer() {
       <aside className="flex items-center gap-2">
         <span className="text-xl">👩‍💻</span>
         <p className="text-sm font-medium">
-          <span className="font-bold">DevTinder</span> — Connect with developers worldwide. © {new Date().getFullYear()}
+          <span className="font-bold">CodeCrush</span> — Connect with developers worldwide. © {new Date().getFullYear()}
         </p>
       </aside>
       <nav className="flex items-center gap-6 text-sm">

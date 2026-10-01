@@ -42,7 +42,7 @@ export default function SignUp() {
         <div className="card-body p-8">
           <div className="text-center">
             <span className="text-5xl inline-block mb-2">👩‍💻</span>
-            <h1 className="card-title justify-center text-3xl font-extrabold tracking-tight">Join DevTinder</h1>
+            <h1 className="card-title justify-center text-3xl font-extrabold tracking-tight">Join CodeCrush</h1>
             <p className="text-sm text-base-content/70 mt-1">Connect and match with developers</p>
           </div>
 

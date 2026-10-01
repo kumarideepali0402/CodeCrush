@@ -40,7 +40,7 @@ export default function Login() {
           <div className="text-center">
             <span className="text-5xl inline-block mb-2">👩‍💻</span>
             <h1 className="card-title justify-center text-3xl font-extrabold tracking-tight">Welcome Back</h1>
-            <p className="text-sm text-base-content/70 mt-1">Sign in to your DevTinder account</p>
+            <p className="text-sm text-base-content/70 mt-1">Sign in to your CodeCrush account</p>
           </div>
 
           <form className="mt-6 space-y-4" onSubmit={onSubmit}>
