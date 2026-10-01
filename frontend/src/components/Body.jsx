@@ -37,10 +37,13 @@ export default function Body(){
         
         fetchUserDetails()
     },[])
-    return <div>
-        <NavBar/>
-        <Outlet/>
-        <Footer/>
-        
-    </div>
+    return (
+        <div className="min-h-screen flex flex-col bg-base-100 text-base-content antialiased">
+            <NavBar />
+            <main className="flex-1 pb-16">
+                <Outlet />
+            </main>
+            <Footer />
+        </div>
+    );
 }

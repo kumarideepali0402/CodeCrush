@@ -37,68 +37,74 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center px-4 py-10">
-      <div className="card w-full max-w-md bg-base-200 shadow-xl">
-        <div className="card-body">
+    <div className="min-h-[calc(100vh-12rem)] flex items-center justify-center px-4 py-10">
+      <div className="card w-full max-w-md bg-base-200/70 border border-base-300 shadow-2xl rounded-3xl backdrop-blur-md">
+        <div className="card-body p-8">
           <div className="text-center">
-            <p className="text-4xl">👩‍💻</p>
-            <h1 className="card-title justify-center text-3xl mt-2">Join DevTinder</h1>
-            <p className="text-base-content/70 mt-1">Find developers worth matching with</p>
+            <span className="text-5xl inline-block mb-2">👩‍💻</span>
+            <h1 className="card-title justify-center text-3xl font-extrabold tracking-tight">Join DevTinder</h1>
+            <p className="text-sm text-base-content/70 mt-1">Connect and match with developers</p>
           </div>
 
           <form className="mt-6 space-y-4" onSubmit={onSignUp}>
-            <label className="form-control w-full">
-              <span className="label-text mb-1">Name</span>
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">Full Name</span>
+              </label>
               <input
                 type="text"
                 placeholder="Ada Lovelace"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full rounded-xl focus:ring-2 focus:ring-primary"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
               />
-            </label>
+            </div>
 
-            <label className="form-control w-full">
-              <span className="label-text mb-1">Email</span>
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">Email</span>
+              </label>
               <input
                 type="email"
-                placeholder="you@dev.com"
-                className="input input-bordered w-full"
+                placeholder="you@domain.com"
+                className="input input-bordered w-full rounded-xl focus:ring-2 focus:ring-primary"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-            </label>
+            </div>
 
-            <label className="form-control w-full">
-              <span className="label-text mb-1">Password</span>
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text font-semibold">Password</span>
+              </label>
               <input
                 type="password"
-                placeholder="Strong password"
-                className="input input-bordered w-full"
+                placeholder="••••••••"
+                className="input input-bordered w-full rounded-xl focus:ring-2 focus:ring-primary"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-            </label>
+            </div>
 
             {message && (
-              <div className="alert alert-info text-sm">
+              <div className="alert alert-error text-sm rounded-xl">
                 <span>{message}</span>
               </div>
             )}
 
-            <button className="btn btn-primary w-full" disabled={isSubmitting}>
+            <button className="btn btn-primary w-full rounded-xl font-bold shadow-md shadow-primary/20 mt-2" disabled={isSubmitting}>
               {isSubmitting ? (
                 <span className="loading loading-spinner" />
-              ) : "Create account"}
+              ) : "Create Account"}
             </button>
           </form>
 
-          <p className="text-center text-sm mt-4">
+          <p className="text-center text-sm mt-6 text-base-content/80">
             Already have an account?{" "}
-            <Link to="/login" className="link link-primary">
+            <Link to="/login" className="link link-primary font-semibold hover:underline">
               Sign in
             </Link>
           </p>
