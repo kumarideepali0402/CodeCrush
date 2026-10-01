@@ -25,6 +25,7 @@ CodeCrush is a full-stack developer networking platform designed to connect soft
 - **Request Management**: Review, accept, or decline incoming connection requests.
 - **Network Overview**: Access a centralized dashboard of accepted mutual connections.
 - **Profile Configuration**: Interactive profile management with real-time preview of changes.
+- **Centralized State Management**: Global client state handled with Redux Toolkit and React-Redux, maintaining synchronized states for user sessions, discovery feed candidates, pending requests, and active connections.
 - **Authentication & Security**:
   - Stateless JSON Web Token (JWT) authentication stored in HTTP-only cookies.
   - Password encryption using bcrypt.
